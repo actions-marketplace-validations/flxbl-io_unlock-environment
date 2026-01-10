@@ -3,7 +3,7 @@ description: "Unlock an environment via SFP Server - designed to never fail the 
 author: "flxbl-io"
 
 branding:
-  icon: "unlock"
+  icon: "anchor"
   color: "green"
 
 inputs:
