@@ -44,9 +44,6 @@ runs:
 
     - name: Unlock environment
       shell: bash
-      env:
-        SFP_SERVER_URL: ${{ inputs.sfp-server-url }}
-        SFP_SERVER_TOKEN: ${{ inputs.sfp-server-token }}
       run: |
         # Unlock environment - designed to never fail the pipeline
         echo "Attempting to unlock environment: ${{ inputs.environment }}"
@@ -55,6 +52,8 @@ runs:
           --name "${{ inputs.environment }}" \
           --repository "${{ inputs.repository }}" \
           --ticket-id "${{ inputs.ticket-id }}" \
+          --sfp-server-url "${{ inputs.sfp-server-url }}" \
+          -t "${{ inputs.sfp-server-token }}" \
         && echo "::notice::Successfully unlocked environment: ${{ inputs.environment }}" \
         || echo "::warning::Failed to unlock environment: ${{ inputs.environment }} (non-blocking)"
 
